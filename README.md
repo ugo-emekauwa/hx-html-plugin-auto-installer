@@ -6,7 +6,7 @@ The HyperFlex HTML Plug-In Automated Installer automates installing the Cisco Hy
 1. Python 3 installed, which can be downloaded from [https://www.python.org/downloads/](https://www.python.org/downloads/).
 2. Clone or download the HyperFlex HTML Plug-In Automated Installer repository by using the ![GitHub Code Button](./assets/GitHub_Code_Button.png "GitHub Code Button") link on the main repository web page or by running the following command:
     ```
-    git clone https://github.com/ugo-emekauwa/hx-vc-html-plugin-auto-installer
+    git clone https://github.com/ugo-emekauwa/hx-html-plugin-auto-installer
     ```
 3. Install the required Python module **paramiko**. The requirements.txt file in the repository can be used by running the following command:
     ```
@@ -30,7 +30,7 @@ The HyperFlex HTML Plug-In Automated Installer automates installing the Cisco Hy
 4. Provide values for the variables listed under **Required Variables**. Samples values are already provided.
 5. Save and then run **hx_vc_html_plugin_auto_installer.py** directly from your IDE or from the command line e.g.:
     ```
-    python hx_vc_html_plugin_auto_installer.py
+    python hx_html_plugin_auto_installer.py
     ```
 
 ## Use Cases:
