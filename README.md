@@ -21,7 +21,7 @@ The HyperFlex HTML Plug-In Automated Installer automates installing the Cisco Hy
 ## How to Use:
 1. Please ensure that the above prerequisites have been met.
 2. Open the **hx_datastore_safeguard.py** file in an IDE or text editor.
-3. Go to the comment section named **Required Variables**, as shown below and provide values for the listed variables. Samples values are already provided:
+3. Go to the comment section named **Required Variables**, as shown below.
     ```python
     ######################
     # Required Variables #
