@@ -47,9 +47,9 @@ The HyperFlex HTML Plug-In Automated Installer automates installing the Cisco Hy
     ```python
     hxdp_service_controller_vm_username = "admin"
     ```
-9. Set the value of the variable named `hxdp_service_controller_vm_password` with the password of the credentials that will be used to access the targeted Cisco HyperFlex cluster. The value must be a string. For example, here is an entry that sets the password to **C1sco12345**:
+9. Set the value of the variable named `hxdp_service_controller_vm_password` with the password of the credentials that will be used to access the targeted Cisco HyperFlex cluster. The value must be a string. For example, here is an entry that sets the password to **C1sco12345!**:
     ```python
-    hxdp_service_controller_vm_password = "C1sco12345"
+    hxdp_service_controller_vm_password = "C1sco12345!"
     ```
 10. Set the value of the variable named `vcenter_ip_address` with the IP address of the VMware vCenter managing the VMware ESXi hosts in the targeted Cisco HyperFlex cluster. The value must be a string. For example, here is an entry that sets the IP address to **198.18.133.30**:
     ```python
@@ -59,9 +59,9 @@ The HyperFlex HTML Plug-In Automated Installer automates installing the Cisco Hy
     ```python
     vcenter_username = "administrator@vsphere.local"
     ```
-12. Set the value of the variable named `vcenter_password` with the password of the credentials for the VMware vCenter managing the VMware ESXi hosts in the targeted Cisco HyperFlex cluster. The value must be a string. For example, here is an entry that sets the password to **C1sco12345**:
+12. Set the value of the variable named `vcenter_password` with the password of the credentials for the VMware vCenter managing the VMware ESXi hosts in the targeted Cisco HyperFlex cluster. The value must be a string. For example, here is an entry that sets the password to **C1sco12345!**:
     ```python
-    vcenter_password = "C1sco12345"
+    vcenter_password = "C1sco12345!"
     ```
 13. Save and then run **hx_vc_html_plugin_auto_installer.py** directly from your IDE or from the command line e.g.:
     ```
