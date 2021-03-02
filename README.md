@@ -67,6 +67,11 @@ The HyperFlex HTML Plug-In Automated Installer automates installing the Cisco Hy
     ```
     python hx_html_plugin_auto_installer.py
     ```
+14. Here is an example of the output from **hx_vc_html_plugin_auto_installer.py** for a successfully completed installation of the Cisco HyperFlex HTML Plug-In.
+
+    ![Completed Run Example](./assets/Completed_Run_Example.png "Completed Run Example")
+
+    If the Cisco HyperFlex HTML Plug-In is already installed, the installer will automatically exit.
 
 ## Use Cases:
 The HyperFlex HTML Plug-In Automated Installer is part of the automation solution used to support the following upcoming Cisco Data Center product demonstrations on Cisco dCloud:
