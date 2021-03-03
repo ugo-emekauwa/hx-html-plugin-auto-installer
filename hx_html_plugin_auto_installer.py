@@ -29,9 +29,18 @@ vcenter_password = "C1sco12345!"
 
 # Setup function to print SSH output from the HXDP Service Controller VM
 def returned_ssh_output(max_data_byte_size=1024):
+    """This is a function that returns the SSH output when using the Paramiko
+    SSH client.
+
+    Args:
+        max_data_byte_size: The maximum byte size of the returned SSH output
+            data. The default is 1024 bytes.
+
+    Returns:
+        The returned SSH output, if available. The returned SSH output data is
+        converted from bytes to a UTF-8 encoded string.
     """
-    Function to return the SSH output when using the Paramiko SSH client.
-    """
+    
     if ssh_client_shell.recv_ready():
         returned_ssh_output = ssh_client_shell.recv(max_data_byte_size)
         return f"Returned SSH Output: {returned_ssh_output.decode('utf-8')}"
@@ -41,13 +50,27 @@ def returned_ssh_output(max_data_byte_size=1024):
 
 # Setup function to send SSH commands to the HXDP Service Controller VM
 def send_ssh_command(command, response_delay=5):
+    """This is a function to send commands over SSH when using the Paramiko SSH
+    client.
+
+    Args:
+        command: The commands to be sent over SSH. The commands should be
+            provided in string format.
+        response_delay: The time delay in seconds after sending the provided
+            SSH command. The time delay allows for the sent SSH command to be
+            fully processed before another command is sent. The default is 
+            five seconds.
+
+    Returns:
+        The returned SSH output, if available. The returned SSH output data is
+        converted from bytes to a UTF-8 encoded string.
     """
-    Function to send commands over SSH when using the Paramiko SSH client.
-    """
+    
     ssh_client_shell.send(command)
     time.sleep(response_delay)
     result = returned_ssh_output()
     return result
+
 
 # Start the HyperFlex HTML Plug-In Automated Installer
 print("Starting the HyperFlex HTML Plug-In Automated Installer...\n")
