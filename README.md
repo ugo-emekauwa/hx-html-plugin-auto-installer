@@ -22,7 +22,7 @@ The HyperFlex HTML Plug-In Automated Installer automates installing the Cisco Hy
 
 ## How to Use:
 1. Please ensure that the above prerequisites have been met.
-2. Open the **hx_vc_html_plugin_auto_installer.py** file in an IDE or text editor.
+2. Open the **hx_html_plugin_auto_installer.py** file in an IDE or text editor.
 3. Go to the comment section named **Required Variables**, as shown below.
     ```python
     ######################
@@ -33,7 +33,7 @@ The HyperFlex HTML Plug-In Automated Installer automates installing the Cisco Hy
     ```python
     hx_vc_html_plugin_file_name = "HyperFlex-VC-HTML-Plugin-2.0.0.zip"
     ```
-5. Set the value of the variable named `hx_vc_html_plugin_local_directory` with the local directory path containing the Cisco HyperFlex HTML Plug-In for VMware vCenter .zip file. The value must be a string and appended with the slash or slashes appropriate to the operating system hosting the local directory. For example, here is an entry that sets the local directory on a Windows operating system to **c:\\Software\\**:
+5. Set the value of the variable named `hx_vc_html_plugin_local_directory` with the local directory path containing the Cisco HyperFlex HTML Plug-In for VMware vCenter .zip file. The value must be a string and appended with the slash or slashes appropriate to the operating system hosting the local directory. For example, here is an entry that sets the local directory path for a Windows operating system to **c:\\Software\\**:
     ```python
     hx_vc_html_plugin_local_directory = "c:\\Software\\"
     ```
@@ -65,11 +65,11 @@ The HyperFlex HTML Plug-In Automated Installer automates installing the Cisco Hy
     ```python
     vcenter_password = "C1sco12345!"
     ```
-13. Save and then run **hx_vc_html_plugin_auto_installer.py** directly from your IDE or from the command line e.g.:
+13. Save and then run **hx_html_plugin_auto_installer.py** directly from your IDE or from the command line e.g.:
     ```
     python hx_html_plugin_auto_installer.py
     ```
-14. Here is an example of the output from **hx_vc_html_plugin_auto_installer.py** for a successfully completed installation of the Cisco HyperFlex HTML Plug-In.
+14. Here is an example of the output from **hx_html_plugin_auto_installer.py** for a successfully completed installation of the Cisco HyperFlex HTML Plug-In.
 
     ![Completed Run Example](./assets/Completed_Run_Example.png "Completed Run Example")
 
@@ -86,9 +86,9 @@ Cisco dCloud is available at [https://dcloud.cisco.com](https://dcloud.cisco.com
 
 ## Related Tools:
 Here are similar tools to help deploy and manage Cisco HyperFlex.
-- [HyperFlex Notification Tool for Cisco Intersight](https://github.com/ugo-emekauwa/hyperflex-notification-tool)
-- [Cisco HyperFlex API Token Manager](https://github.com/ugo-emekauwa/hx-api-token-manager)
 - [HyperFlex Edge Automated Deployment Tool for Cisco Intersight](https://github.com/ugo-emekauwa/hx-auto-deploy)
+- [Cisco HyperFlex API Token Manager](https://github.com/ugo-emekauwa/hx-api-token-manager)
+- [HyperFlex Notification Tool for Cisco Intersight](https://github.com/ugo-emekauwa/hyperflex-notification-tool)
 
 ## Author:
 Ugo Emekauwa
