@@ -4,7 +4,7 @@ Author: Ugo Emekauwa
 Contact: uemekauw@cisco.com, uemekauwa@gmail.com
 Summary: The HyperFlex HTML Plug-In Automated Installer automates installing
          the Cisco HyperFlex HTML Plug-In for VMware vCenter.
-Notes: Tested on HyperFlex 4.5(1a), VMware vCenter 7.0.1.003
+Notes: Tested on Cisco HyperFlex HTML Plug-In for VMware vCenter 2.0.0, HyperFlex 4.5(1a), and VMware vCenter 7.0.1.003
 """
 
 # Import needed Python modules
@@ -72,107 +72,122 @@ def send_ssh_command(command, response_delay=5):
     return result
 
 
-# Start the HyperFlex HTML Plug-In Automated Installer
-print("Starting the HyperFlex HTML Plug-In Automated Installer...\n")
+try:
+    # Start the HyperFlex HTML Plug-In Automated Installer
+    print("Starting the HyperFlex HTML Plug-In Automated Installer...\n")
 
-# Setup the SSH client
-print("Setting up the SSH client...\n")
-ssh_client = paramiko.SSHClient()
+    # Setup the SSH client
+    print("Setting up the SSH client...\n")
+    ssh_client = paramiko.SSHClient()
 
-# Configure the SSH client to accept missing host keys
-print("Configuring the SSH client to accept missing host keys...\n")
-ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    # Configure the SSH client to accept missing host keys
+    print("Configuring the SSH client to accept missing host keys...\n")
+    ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
-# Connect the SSH client to the target HXDP Service Controller VM
-print("Connecting the SSH client to the target HXDP Service Controller VM...\n")
-ssh_client.connect(hostname = hxdp_service_controller_vm_ip_address,
-                   username = hxdp_service_controller_vm_username,
-                   password = hxdp_service_controller_vm_password)
+    # Connect the SSH client to the target HXDP Service Controller VM
+    print("Connecting the SSH client to the target HXDP Service Controller VM...\n")
+    ssh_client.connect(hostname = hxdp_service_controller_vm_ip_address,
+                       username = hxdp_service_controller_vm_username,
+                       password = hxdp_service_controller_vm_password)
 
-# Setup the SSH client shell
-print("Setting up the SSH client shell...\n")
-ssh_client_shell = ssh_client.invoke_shell()
+    # Setup the SSH client shell
+    print("Setting up the SSH client shell...\n")
+    ssh_client_shell = ssh_client.invoke_shell()
 
-# Send command over SSH to create a work space directory on the HXDP Service Controller VM
-print("Sending command over SSH to create a work space directory on the HXDP "
-      "Service Controller VM...\n")
-send_ssh_command(f"mkdir {hxdp_remote_workspace_directory}\n")
+    # Send command over SSH to create a work space directory on the HXDP Service Controller VM
+    print("Sending command over SSH to create a work space directory on the HXDP "
+          "Service Controller VM...\n")
+    send_ssh_command(f"mkdir {hxdp_remote_workspace_directory}\n")
 
-# Setup the SFTP client
-print("Setting up the SFTP client...\n")
-sftp_client = ssh_client.open_sftp()
+    # Setup the SFTP client
+    print("Setting up the SFTP client...\n")
+    sftp_client = ssh_client.open_sftp()
 
-# Transfer over SFTP the HX vCenter HTML plug-in file from the local source directory to the work space directory on the HXDP Service Controller VM
-print("Transferring over SFTP the HX vCenter HTML plug-in file from the local "
-      "source directory to the work space directory on the HXDP Service "
-      "Controller VM...\n")
-sftp_client.put(f"{hx_vc_html_plugin_local_directory}{hx_vc_html_plugin_file_name}",
-                f"{hxdp_remote_workspace_directory}{hx_vc_html_plugin_file_name}")
+    # Transfer over SFTP the HX vCenter HTML plug-in file from the local source directory to the work space directory on the HXDP Service Controller VM
+    print("Transferring over SFTP the HX vCenter HTML plug-in file from the local "
+          "source directory to the work space directory on the HXDP Service "
+          "Controller VM...\n")
+    sftp_client.put(f"{hx_vc_html_plugin_local_directory}{hx_vc_html_plugin_file_name}",
+                    f"{hxdp_remote_workspace_directory}{hx_vc_html_plugin_file_name}")
 
-# Close the SFTP client
-print("Closing the SFTP client...\n")
-sftp_client.close
+    # Close the SFTP client
+    print("Closing the SFTP client...\n")
+    sftp_client.close
 
-# Send command over SSH to change to the work space directory on the HXDP Service Controller VM
-print("Sending command over SSH to change to the work space directory on the HXDP Service Controller VM...\n")
-send_ssh_command(f"cd {hxdp_remote_workspace_directory}\n")
+    # Send command over SSH to change to the work space directory on the HXDP Service Controller VM
+    print("Sending command over SSH to change to the work space directory on the HXDP Service Controller VM...\n")
+    send_ssh_command(f"cd {hxdp_remote_workspace_directory}\n")
 
-# Send command over SSH to unzip the HX vCenter HTML plug-In file
-print("Sending command over SSH to unzip the HX vCenter HTML plug-In file...\n")
-send_ssh_command(f"unzip -u {hx_vc_html_plugin_file_name}\n")
+    # Send command over SSH to unzip the HX vCenter HTML plug-in file
+    print("Sending command over SSH to unzip the HX vCenter HTML plug-in file...\n")
+    send_ssh_command(f"unzip -u {hx_vc_html_plugin_file_name}\n")
 
-# Send command over SSH to run the install_vc_plugin.py script on the HXDP Service Controller VM
-print("Sending command over SSH to run the install_vc_plugin.py script on the "
-      "HXDP Service Controller VM...\n")
-send_ssh_command("install_vc_plugin\n")
+    # Provide buffer for unzipping the HX vCenter HTML plug-in file
+    print("Providing 20 second buffer for unzipping the HX vCenter HTML plug-in file...\n")
+    time.sleep(20)
 
-# Send command over SSH to enter the VMware vCenter IP address for the install_vc_plugin.py script
-print("Sending command over SSH to enter the VMware vCenter IP address for the "
-      "install_vc_plugin.py script...\n")
-send_ssh_command(f"{vcenter_ip_address}\n")
+    # Send command over SSH to run the install_vc_plugin.py script on the HXDP Service Controller VM
+    print("Sending command over SSH to run the install_vc_plugin.py script on the "
+          "HXDP Service Controller VM...\n")
+    send_ssh_command("install_vc_plugin\n")
 
-# Send command over SSH to enter the VM vCenter username for the install_vc_plugin.py script
-print("Sending command over SSH to enter the VMware vCenter username for the "
-      "install_vc_plugin.py script...\n")
-send_ssh_command(f"{vcenter_username}\n")
+    # Send command over SSH to enter the VMware vCenter IP address for the install_vc_plugin.py script
+    print("Sending command over SSH to enter the VMware vCenter IP address for the "
+          "install_vc_plugin.py script...\n")
+    send_ssh_command(f"{vcenter_ip_address}\n")
 
-# Send command over SSH to enter the VM vCenter password for the install_vc_plugin.py script
-print("Sending command over SSH to enter the VMware vCenter password for the "
-      "install_vc_plugin.py script...\n")
-vcenter_install_precheck = send_ssh_command(f"{vcenter_password}\n")
+    # Send command over SSH to enter the VM vCenter username for the install_vc_plugin.py script
+    print("Sending command over SSH to enter the VMware vCenter username for the "
+          "install_vc_plugin.py script...\n")
+    send_ssh_command(f"{vcenter_username}\n")
 
-# Check if the Cisco HyperFlex HTML Plug-In for VMware vCenter is already installed
-print("Checking if the Cisco HyperFlex HTML Plug-In for VMware vCenter is "
-      "already installed...\n")
-hx_vc_html_plugin_installed_keyphrase = "is already installed"
-if hx_vc_html_plugin_installed_keyphrase in vcenter_install_precheck:
-    print("The Cisco HyperFlex HTML Plug-In for VMware vCenter is already "
-          "installed.\n")
-    print("The HyperFlex HTML Plug-In Automated Installer will now exit.\n")
-    # Close the SSH client connection to the HXDP Service Controller VM
-    print("Closing the SSH client connection to the HXDP Service Controller VM...\n")
-    ssh_client.close
-    # Exit the HyperFlex HTML Plug-In Automated Installer
-    print("Exiting the HyperFlex HTML Plug-In Automated Installer.\n")
+    # Send command over SSH to enter the VM vCenter password for the install_vc_plugin.py script
+    print("Sending command over SSH to enter the VMware vCenter password for the "
+          "install_vc_plugin.py script...\n")
+    vcenter_install_precheck = send_ssh_command(f"{vcenter_password}\n")
+
+    # Provide buffer for login to VMware vCenter
+    print("Providing 20 second buffer for login to VMware vCenter...\n")
+    time.sleep(20)
+
+    # Check if the Cisco HyperFlex HTML Plug-In for VMware vCenter is already installed
+    print("Checking if the Cisco HyperFlex HTML Plug-In for VMware vCenter is "
+          "already installed...\n")
+    hx_vc_html_plugin_installed_keyphrase = "is already installed"
+    if hx_vc_html_plugin_installed_keyphrase in vcenter_install_precheck:
+        print("The Cisco HyperFlex HTML Plug-In for VMware vCenter is already "
+              "installed.\n")
+        print("The HyperFlex HTML Plug-In Automated Installer will now exit.\n")
+        # Close the SSH client connection to the HXDP Service Controller VM
+        print("Closing the SSH client connection to the HXDP Service Controller VM...\n")
+        ssh_client.close
+    else:
+        # Send command over SSH to enter the HXDP 'root' username password for the install_vc_plugin.py script
+        print("Sending command over SSH to enter the HXDP 'root' username password for "
+              "the install_vc_plugin.py script...\n")
+        send_ssh_command(f"{hxdp_service_controller_vm_password}\n")
+
+        # Send command over SSH to enter the HXDP 'admin' username password for the install_vc_plugin.py script
+        print("Sending command over SSH to enter the HXDP 'admin' username password "
+              "for the install_vc_plugin.py script...\n")
+        hx_vc_html_plugin_install_result = send_ssh_command(f"{hxdp_service_controller_vm_password}\n")
+
+        # Print the results of the install_vc_plugin.py script
+        print("Printing the results of the install_vc_plugin.py script...\n")
+        try:
+            print(hx_vc_html_plugin_install_result, "\n")
+        except Exception as exception_message:
+            print("Unable to print the results of the install_vc_plugin.py script due to an error.\n")
+            print(f"Exception Message: {exception_message}\n")
+
+        # Close the SSH client connection to the HXDP Service Controller VM
+        print("Closing the SSH client connection to the HXDP Service Controller VM...\n")
+        ssh_client.close
+except Exception as exception_message:
+    print("Unable to complete running the HyperFlex HTML Plug-In Automated Installer due to an error.\n")
+    print(f"Exception Message: {exception_message}\n")
+    print("Exiting the HyperFlex Cluster Post-Deployment Tasks Tool due to the error.\n")
     sys.exit(0)
-
-# Send command over SSH to enter the HXDP 'root' username password for the install_vc_plugin.py script
-print("Sending command over SSH to enter the HXDP 'root' username password for "
-      "the install_vc_plugin.py script...\n")
-send_ssh_command(f"{hxdp_service_controller_vm_password}\n")
-
-# Send command over SSH to enter the HXDP 'admin' username password for the install_vc_plugin.py script
-print("Sending command over SSH to enter the HXDP 'admin' username password "
-      "for the install_vc_plugin.py script...\n")
-hx_vc_html_plugin_install_result = send_ssh_command(f"{hxdp_service_controller_vm_password}\n")
-
-# Print the results of the install_vc_plugin.py script
-print("Printing the results of the install_vc_plugin.py script...\n")
-print(hx_vc_html_plugin_install_result, "\n")
-
-# Close the SSH client connection to the HXDP Service Controller VM
-print("Closing the SSH client connection to the HXDP Service Controller VM...\n")
-ssh_client.close
 
 # Exit the HyperFlex HTML Plug-In Automated Installer
 print("Exiting the HyperFlex HTML Plug-In Automated Installer.\n")
