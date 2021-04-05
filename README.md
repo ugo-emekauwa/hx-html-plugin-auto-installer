@@ -78,9 +78,9 @@ The HyperFlex HTML Plug-In Automated Installer automates installing the Cisco Hy
 ## Use Cases:
 The HyperFlex HTML Plug-In Automated Installer is part of the automation solution used to support the following Cisco Data Center product demonstrations on Cisco dCloud:
 
-1. [_Cisco HyperFlex Edge 4.5 with Intersight v1 (All Flash, 2-Node)_](https://dcloud2-rtp.cisco.com/content/demo/760975) - See the section **Deploy HyperFlex Using API**.
-2. [_Cisco HyperFlex Edge 4.5 with Intersight v1 (Hybrid, 2-Node)_](https://dcloud2-rtp.cisco.com/content/demo/760974) - See the section **Deploy HyperFlex Using API**.
-3. [_Cisco HyperFlex Edge 4.5 with Intersight v1 (All Flash, 3-Node)_](https://dcloud-cms.cisco.com/demo/cisco-hyperflex-edge-4-5-with-intersight-v1-all-flash-3-node) - See the section **Deploy HyperFlex Using API**.
+1. [_Cisco HyperFlex Edge 4.5 with Intersight v1 (All Flash, 2-Node)_](https://dcloud2-rtp.cisco.com/content/demo/760975)
+2. [_Cisco HyperFlex Edge 4.5 with Intersight v1 (Hybrid, 2-Node)_](https://dcloud2-rtp.cisco.com/content/demo/760974)
+3. [_Cisco HyperFlex Edge 4.5 with Intersight v1 (All Flash, 3-Node)_](https://dcloud-cms.cisco.com/demo/cisco-hyperflex-edge-4-5-with-intersight-v1-all-flash-3-node)
 
 Cisco dCloud is available at [https://dcloud.cisco.com](https://dcloud.cisco.com), where product demonstrations and labs can be found in the Catalog.
 
