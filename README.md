@@ -10,15 +10,14 @@ The HyperFlex HTML Plug-In Automated Installer automates installing the Cisco Hy
     ```
     git clone https://github.com/ugo-emekauwa/hx-html-plugin-auto-installer
     ```
-3. Install the required Python module **paramiko**. The requirements.txt file in the repository can be used by running the following command:
+3. Install the required Python module **paramiko** by running the following command:
     ```
-    python -m pip install -r requirements.txt
+    pip install paramiko
     ```
-4. The IP address of one the service controller VMs on the targeted Cisco HyperFlex cluster.
+4. The IP address of the targeted Cisco HyperFlex cluster or one of the underlying service controller VMs.
 5. User credentials with administrative rights on the targeted Cisco HyperFlex cluster.
-6. The IP address of the targeted VMware vCenter managing the VMware ESXi hosts of the Cisco HyperFlex cluster.
-7. User credentials with administrative rights on the targeted VMware vCenter.
-8. A copy of the latest Cisco HyperFlex HTML Plug-In for VMware vCenter .zip file. This can be downloaded from the [Cisco Software Download Site](https://software.cisco.com/download/home/286305544/type/286305994/release).
+6. User credentials with administrative rights on the VMware vCenter managing the VMware ESXi hosts of the Cisco HyperFlex cluster.
+7. A copy of the Cisco HyperFlex HTML Plug-In for VMware vCenter .zip file, version 2.1.0. This can be downloaded from the [Cisco Software Download Site](https://software.cisco.com/download/home/286305544/type/286305994/release).
 
 ## How to Use:
 1. Please ensure that the above prerequisites have been met.
@@ -29,9 +28,9 @@ The HyperFlex HTML Plug-In Automated Installer automates installing the Cisco Hy
     # Required Variables #
     ######################
     ```
-4. Set the value of the variable named `hx_vc_html_plugin_file_name` with the file name of the Cisco HyperFlex HTML Plug-In for VMware vCenter .zip file that was downloaded from the [Cisco Software Download Site](https://software.cisco.com/download/home/286305544/type/286305994/release). The value must be a string. For example, here is an entry that sets the file name to **HyperFlex-VC-HTML-Plugin-2.0.0.zip**:
+4. Set the value of the variable named `hx_vc_html_plugin_file_name` with the file name of the Cisco HyperFlex HTML Plug-In for VMware vCenter .zip file that was downloaded from the [Cisco Software Download Site](https://software.cisco.com/download/home/286305544/type/286305994/release). The value must be a string. For example, here is an entry that sets the file name to **HyperFlex-VC-HTML-Plugin-2.1.0.zip**:
     ```python
-    hx_vc_html_plugin_file_name = "HyperFlex-VC-HTML-Plugin-2.0.0.zip"
+    hx_vc_html_plugin_file_name = "HyperFlex-VC-HTML-Plugin-2.1.0.zip"
     ```
 5. Set the value of the variable named `hx_vc_html_plugin_local_directory` with the local directory path containing the Cisco HyperFlex HTML Plug-In for VMware vCenter .zip file. The value must be a string and appended with the slash or slashes appropriate to the operating system hosting the local directory. For example, here is an entry that sets the local directory path for a Windows operating system to **c:\\Software\\**:
     ```python
@@ -41,9 +40,9 @@ The HyperFlex HTML Plug-In Automated Installer automates installing the Cisco Hy
     ```python
     hxdp_remote_workspace_directory = "/home/admin/tmp_hx_vc_html_plugin_install/"
     ```
-7. Set the value of the variable named `hxdp_service_controller_vm_ip_address` with the IP address of one of the service controller VMs in the targeted Cisco HyperFlex cluster. The value must be a string. For example, here is an entry that sets the IP address to **198.18.135.103**:
+7. Set the value of the variable named `hxdp_service_controller_vm_ip_address` with the IP address of the targeted Cisco HyperFlex cluster or one of the underlying service controller VMs. The value must be a string. For example, here is an entry that sets the IP address to **198.18.135.100**:
     ```python
-    hxdp_service_controller_vm_ip_address = "198.18.135.103"
+    hxdp_service_controller_vm_ip_address = "198.18.135.100"
     ```
 8. Set the value of the variable named `hxdp_service_controller_vm_username` with the username of the credentials that will be used to access the targeted Cisco HyperFlex cluster. The value must be a string. For example, here is an entry that sets the username to **admin**:
     ```python
@@ -53,23 +52,19 @@ The HyperFlex HTML Plug-In Automated Installer automates installing the Cisco Hy
     ```python
     hxdp_service_controller_vm_password = "C1sco12345!"
     ```
-10. Set the value of the variable named `vcenter_ip_address` with the IP address of the VMware vCenter managing the VMware ESXi hosts in the targeted Cisco HyperFlex cluster. The value must be a string. For example, here is an entry that sets the IP address to **198.18.133.30**:
-    ```python
-    vcenter_ip_address = "198.18.133.30"
-    ```
-11. Set the value of the variable named `vcenter_username` with the username of the credentials for the VMware vCenter managing the VMware ESXi hosts in the targeted Cisco HyperFlex cluster. The value must be a string. For example, here is an entry that sets the username to **administrator@vsphere.local**:
+10. Set the value of the variable named `vcenter_username` with the username of the credentials for the VMware vCenter managing the VMware ESXi hosts in the targeted Cisco HyperFlex cluster. The value must be a string. For example, here is an entry that sets the username to **administrator@vsphere.local**:
     ```python
     vcenter_username = "administrator@vsphere.local"
     ```
-12. Set the value of the variable named `vcenter_password` with the password of the credentials for the VMware vCenter managing the VMware ESXi hosts in the targeted Cisco HyperFlex cluster. The value must be a string. For example, here is an entry that sets the password to **C1sco12345!**:
+11. Set the value of the variable named `vcenter_password` with the password of the credentials for the VMware vCenter managing the VMware ESXi hosts in the targeted Cisco HyperFlex cluster. The value must be a string. For example, here is an entry that sets the password to **C1sco12345!**:
     ```python
     vcenter_password = "C1sco12345!"
     ```
-13. Save and then run **hx_html_plugin_auto_installer.py** directly from your IDE or from the command line e.g.:
+12. Save and then run **hx_html_plugin_auto_installer.py** directly from your IDE or from the command line e.g.:
     ```
     python hx_html_plugin_auto_installer.py
     ```
-14. Here is an example of the output from **hx_html_plugin_auto_installer.py** for a successfully completed installation of the Cisco HyperFlex HTML Plug-In.
+13. Here is an example of the output from **hx_html_plugin_auto_installer.py** for a successfully completed installation of the Cisco HyperFlex HTML Plug-In.
 
     ![Completed Run Example](./assets/Completed_Run_Example.png "Completed Run Example")
 
