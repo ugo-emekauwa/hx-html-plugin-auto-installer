@@ -80,8 +80,9 @@ The HyperFlex HTML Plug-In Automated Installer is a modified version of part of 
 Cisco dCloud is available at [https://dcloud.cisco.com](https://dcloud.cisco.com), where product demonstrations and labs can be found in the Catalog.
 
 ## Related Tools:
-Here are similar tools to help deploy and manage Cisco HyperFlex.
+Here are similar tools to help deploy and manage Cisco HyperFlex and UCS products.
 - [HyperFlex Edge Automated Deployment Tool for Cisco Intersight](https://github.com/ugo-emekauwa/hx-auto-deploy)
+- [Cisco IMM Automation Tools](https://github.com/ugo-emekauwa/cisco-imm-automation-tools)
 - [Cisco HyperFlex API Token Manager](https://github.com/ugo-emekauwa/hx-api-token-manager)
 - [HyperFlex Notification Tool for Cisco Intersight](https://github.com/ugo-emekauwa/hyperflex-notification-tool)
 
