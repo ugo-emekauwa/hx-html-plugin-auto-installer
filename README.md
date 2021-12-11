@@ -17,7 +17,7 @@ The HyperFlex HTML Plug-In Automated Installer automates installing the Cisco Hy
 4. The IP address of the targeted Cisco HyperFlex cluster or one of the underlying service controller VMs.
 5. User credentials with administrative rights on the targeted Cisco HyperFlex cluster.
 6. User credentials with administrative rights on the VMware vCenter managing the VMware ESXi hosts of the Cisco HyperFlex cluster.
-7. A copy of the Cisco HyperFlex HTML Plug-In for VMware vCenter .zip file, version 2.1.0. This can be downloaded from the [Cisco Software Download Site](https://software.cisco.com/download/home/286305544/type/286305994/release).
+7. A copy of the Cisco HyperFlex HTML Plug-In for VMware vCenter .zip file, version **2.1.0**. This can be downloaded from the [Cisco Software Download Site](https://software.cisco.com/download/home/286305544/type/286305994/release).
 
 ## How to Use:
 1. Please ensure that the above prerequisites have been met.
