@@ -1,4 +1,13 @@
-# HyperFlex HTML Plug-In Automated Installer
+<h1 align="center">HyperFlex HTML Plug-In Automated Installer</h1>
+
+<h1 align="center">
+  <img alt="HyperFlex HTML Plug-In Automated Installer Image" title="HyperFlex HTML Plug-In Automated Installer" src="./assets/HyperFlex_HTML_Plug-In_Automated_Installer_Graphic.png">
+</h1>  
+
+<p align="center">
+  The HyperFlex HTML Plug-In Automated Installer automates installing the Cisco HyperFlex HTML Plug-In for VMware vCenter.
+</p>
+<br>
 
 [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/ugo-emekauwa/hx-html-plugin-auto-installer)
 
