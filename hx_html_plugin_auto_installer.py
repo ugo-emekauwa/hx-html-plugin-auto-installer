@@ -1,10 +1,10 @@
 """
-HyperFlex HTML Plug-In Automated Installer v2
+HyperFlex HTML Plug-In Automated Installer v3
 Author: Ugo Emekauwa
 Contact: uemekauw@cisco.com, uemekauwa@gmail.com
 Summary: The HyperFlex HTML Plug-In Automated Installer automates installing
          the Cisco HyperFlex HTML Plug-In for VMware vCenter.
-Notes: Tested on Cisco HyperFlex HTML Plug-In for VMware vCenter 2.1.0, HyperFlex 5.0(1a), and VMware vCenter 7.0.1.003
+Notes: Tested on Cisco HyperFlex HTML Plug-In for VMware vCenter 2.1.0, HyperFlex 5.0(2d), and VMware vCenter 7.0.3.014
 """
 
 # Import needed Python modules
@@ -73,7 +73,7 @@ def send_ssh_command(command, response_delay=5):
 
 try:
     # Start the HyperFlex HTML Plug-In Automated Installer
-    print("Starting the HyperFlex HTML Plug-In Automated Installer...\n")
+    print("Starting the Cisco HyperFlex HTML Plug-In Automated Installer for VMware vCenter...\n")
 
     # Setup the SSH client
     print("Setting up the SSH client...\n")
@@ -132,24 +132,37 @@ try:
 
     # Send command over SSH to enter the HXDP Service Controller 'admin' password for the install_vc_plugin.py script
     print("Sending command over SSH to enter the HXDP 'admin' username password for "
-                 "the install_vc_plugin.py script...\n")
+          "the install_vc_plugin.py script...\n")
     send_ssh_command(f"{hxdp_service_controller_vm_password}\n")
 
     # Send command over SSH to enter the VMware vCenter username for the install_vc_plugin.py script
     print("Sending command over SSH to enter the VMware vCenter username for the "
-                 "install_vc_plugin.py script...\n")
+          "install_vc_plugin.py script...\n")
     send_ssh_command(f"{vcenter_username}\n")
 
     # Send command over SSH to enter the VM vCenter password for the install_vc_plugin.py script
     print("Sending command over SSH to enter the VMware vCenter password for the "
-                 "install_vc_plugin.py script...\n")
+          "install_vc_plugin.py script...\n")
     hx_vc_html_plugin_install_result = send_ssh_command(f"{vcenter_password}\n")
 
     # Provide buffer for login to VMware vCenter
     print("Providing 20 second buffer for login to VMware vCenter...\n")
     time.sleep(20)
 
+    # Check if the Cisco HyperFlex HTML Plug-In for VMware vCenter is compatible with the target vCenter
+    print("Checking if the Cisco HyperFlex HTML Plug-In for VMware vCenter is "
+          "compatible with the target vCenter version...\n")
+    hx_vc_html_plugin_compatibility_check_keyphrase = "may not be compatible for this vCenter"
+    if hx_vc_html_plugin_compatibility_check_keyphrase in hx_vc_html_plugin_install_result:
+        print("The Cisco HyperFlex HTML Plug-In for VMware vCenter may "
+              "not be compatible with the target vCenter version.\n")
+        print("An attempt will be made to continue the installation...\n")
+        # Send command over SSH to continue with the Cisco HyperFlex HTML Plug-In installation
+        hx_vc_html_plugin_install_result = send_ssh_command("y\n")
+
     # Check if the Cisco HyperFlex HTML Plug-In for VMware vCenter is already installed
+    print("Checking if the Cisco HyperFlex HTML Plug-In for VMware vCenter is "
+          "already installed...\n")    
     hx_vc_html_plugin_installed_keyphrase = "is already installed"
     if hx_vc_html_plugin_installed_keyphrase in hx_vc_html_plugin_install_result:
         print("The Cisco HyperFlex HTML Plug-In for VMware vCenter is already "
