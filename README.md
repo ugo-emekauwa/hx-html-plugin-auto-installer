@@ -26,7 +26,7 @@ The HyperFlex HTML Plug-In Automated Installer automates installing the Cisco Hy
 4. The IP address of the targeted Cisco HyperFlex cluster or one of the underlying service controller VMs.
 5. User credentials with administrative rights on the targeted Cisco HyperFlex cluster.
 6. User credentials with administrative rights on the VMware vCenter managing the VMware ESXi hosts of the Cisco HyperFlex cluster.
-7. A copy of the Cisco HyperFlex HTML Plug-In for VMware vCenter .zip file, version **2.1.0**. This can be downloaded from the [Cisco Software Download Site](https://software.cisco.com/download/home/286305544/type/286305994/release).
+7. A copy of the Cisco HyperFlex HTML Plug-In for VMware vCenter .zip file, version **2.2.0**. This can be downloaded from the [Cisco Software Download Site](https://software.cisco.com/download/home/286305544/type/286305994/release).
 
 ## How to Use:
 1. Please ensure that the above prerequisites have been met.
@@ -37,9 +37,9 @@ The HyperFlex HTML Plug-In Automated Installer automates installing the Cisco Hy
     # Required Variables #
     ######################
     ```
-4. Set the value of the variable named `hx_vc_html_plugin_file_name` with the file name of the Cisco HyperFlex HTML Plug-In for VMware vCenter .zip file that was downloaded from the [Cisco Software Download Site](https://software.cisco.com/download/home/286305544/type/286305994/release). The value must be a string. For example, here is an entry that sets the file name to **HyperFlex-VC-HTML-Plugin-2.1.0.zip**:
+4. Set the value of the variable named `hx_vc_html_plugin_file_name` with the file name of the Cisco HyperFlex HTML Plug-In for VMware vCenter .zip file that was downloaded from the [Cisco Software Download Site](https://software.cisco.com/download/home/286305544/type/286305994/release). The value must be a string. For example, here is an entry that sets the file name to **HyperFlex-VC-HTML-Plugin-2.2.0.zip**:
     ```python
-    hx_vc_html_plugin_file_name = "HyperFlex-VC-HTML-Plugin-2.1.0.zip"
+    hx_vc_html_plugin_file_name = "HyperFlex-VC-HTML-Plugin-2.2.0.zip"
     ```
 5. Set the value of the variable named `hx_vc_html_plugin_local_directory` with the local directory path containing the Cisco HyperFlex HTML Plug-In for VMware vCenter .zip file. The value must be a string and appended with the slash or slashes appropriate to the operating system hosting the local directory. For example, here is an entry that sets the local directory path for a Windows operating system to **c:\\Software\\**:
     ```python
