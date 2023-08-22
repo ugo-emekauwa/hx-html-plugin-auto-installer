@@ -4,7 +4,7 @@ Author: Ugo Emekauwa
 Contact: uemekauw@cisco.com, uemekauwa@gmail.com
 Summary: The HyperFlex HTML Plug-In Automated Installer automates installing
          the Cisco HyperFlex HTML Plug-In for VMware vCenter.
-Notes: Tested on Cisco HyperFlex HTML Plug-In for VMware vCenter 2.1.0, HyperFlex 5.0(2d), and VMware vCenter 7.0.3.014
+Notes: Tested on Cisco HyperFlex HTML Plug-In for VMware vCenter 2.2.0, HyperFlex 5.0(2d), and VMware vCenter 7.0.3.014
 """
 
 # Import needed Python modules
@@ -16,7 +16,7 @@ import paramiko
 ######################
 # Required Variables #
 ######################
-hx_vc_html_plugin_file_name = "HyperFlex-VC-HTML-Plugin-2.1.0.zip"
+hx_vc_html_plugin_file_name = "HyperFlex-VC-HTML-Plugin-2.2.0.zip"
 hx_vc_html_plugin_local_directory = "c:\\Software\\"
 hxdp_remote_workspace_directory = "/home/admin/tmp_hx_vc_html_plugin_install/"
 hxdp_service_controller_vm_ip_address = "198.18.135.100"
